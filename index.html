@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Clone Gallery Score Board</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+        .leaderboard-icon {
+            width: 30px; /* Ajustez la largeur de l'icône */
+            height: auto; /* Maintient le ratio de l'image */
+            vertical-align: middle; /* Aligne l'image avec le texte */
+            horizontal-align: middle; /* Aligne l'image avec le texte */      
+            margin-right: 6px; /* Ajoute un espace entre l'image et le texte */
+        }
+        
+        .leaderboard {
+            background-color: #f0f0f0; /* Couleur de fond */
+            border: 1 px solid #000000; /* Bordure */
+            border-radius: 10px; /* Coins arrondis */
+            padding: 20px; /* Espacement interne */
+            width: 300px; /* Largeur fixe */
+            margin: 20px auto; /* Centrer horizontalement */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre */
+            font-family: 'Arial', sans-serif; /* Police */
+        }
+        
+        .leaderboard h2 {
+            color: #000000; /* Couleur du titre */
+            text-align: center; /* Centre le titre */
+        }
+        
+        .leaderboard-entries {
+            list-style-type: none; /* Supprime les puces */
+            padding: 0; /* Supprime le padding */
+        }
+        
+        .leaderboard-entry {
+            background-color: #ffffff; /* Couleur des entrées */
+            margin: 10px 0; /* Espacement entre les entrées */
+            padding: 10px; /* Espacement interne */
+            border-radius: 5px; /* Coins arrondis */
+            display: flex; /* Pour aligner le contenu */
+            justify-content: space-between; /* Espacement entre nom et score */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre */
+        }
+        
+        .leaderboard-entry:nth-child(odd) {
+            background-color: #e9ecef; /* Couleur différente pour les lignes paires */
+        }
+  </style>
+</head>
+<body class="container-fluid" style="background-color: #f7f7f7">
+    <div id="leaderboard" class="leaderboard">
+            <h2>
+                <img src="icons8-edvard-munch-50.png" alt="Edvard Munch" class="leaderboard-icon">
+                Classement
+            </h2>
+            <div class="leaderboard-entries"><div class="leaderboard-entry"><span>Hubschon</span> <span>21</span></div><div class="leaderboard-entry"><span>Hubschon</span> <span>20</span></div><div class="leaderboard-entry"><span>Hubschon</span> <span>18</span></div><div class="leaderboard-entry"><span>Natim</span> <span>8</span></div><div class="leaderboard-entry"><span>Hubschon</span> <span>4</span></div></div>
+        </div>
+  <script src="app.js"></script>
+  <script>
+    const element = document.getElementById("leaderboard");
+    const app = Elm.CloneGalleryScoreBoard.init({
+        node: element,
+        flags: {
+            "kinto_settings": {
+                "apiServer": "",
+                "csrfToken": ""
+            }
+        }
+    });
+  </script>
+</body>
+</html>
