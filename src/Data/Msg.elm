@@ -1,5 +1,8 @@
 module Data.Msg exposing (Msg(..))
 
+import Data.Leader exposing (Leader)
+import Kinto
+
 
 type Msg
-    = NoOp
+    = FetchLeadersResponse (Result Kinto.Error (Kinto.Pager Leader))
