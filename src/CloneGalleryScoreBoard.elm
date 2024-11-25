@@ -2,10 +2,12 @@ module CloneGalleryScoreBoard exposing (main)
 
 import Browser
 import Data.Flags exposing (Flags)
+import Data.Leader exposing (Leader)
 import Data.Model exposing (Model)
 import Data.Msg exposing (Msg(..))
-import Html exposing (Html, div)
+import Html exposing (..)
 import Html.Attributes as Attr
+import Views.Leader as Leader
 
 
 main : Program Flags Model Msg
@@ -21,7 +23,7 @@ main =
 init : Flags -> ( Model, Cmd Msg )
 init flags =
     ( { kinto_settings = flags.kinto_settings
-      , leaders = []
+      , leaders = [ Leader "Séverine" 21, Leader "Rémy" 20, Leader "Robin" 12, Leader "Florian" 10, Leader "François" 4 ]
       }
     , Cmd.none
     )
@@ -33,7 +35,7 @@ update msg model =
 
 
 view : Model -> Html Msg
-view model =
+view { leaders } =
     div
         [ Attr.id "leaderboard"
         , Attr.class "leaderboard"
@@ -47,48 +49,7 @@ view model =
                 []
             , text " Classement "
             ]
-        , div
-            [ Attr.class "leaderboard-entries"
-            ]
-            [ div
-                [ Attr.class "leaderboard-entry"
-                ]
-                [ span []
-                    [ text "Hubschon" ]
-                , span []
-                    [ text "21" ]
-                ]
-            , div
-                [ Attr.class "leaderboard-entry"
-                ]
-                [ span []
-                    [ text "Hubschon" ]
-                , span []
-                    [ text "20" ]
-                ]
-            , div
-                [ Attr.class "leaderboard-entry"
-                ]
-                [ span []
-                    [ text "Hubschon" ]
-                , span []
-                    [ text "18" ]
-                ]
-            , div
-                [ Attr.class "leaderboard-entry"
-                ]
-                [ span []
-                    [ text "Natim" ]
-                , span []
-                    [ text "8" ]
-                ]
-            , div
-                [ Attr.class "leaderboard-entry"
-                ]
-                [ span []
-                    [ text "Hubschon" ]
-                , span []
-                    [ text "4" ]
-                ]
-            ]
+        , List.map Leader.show leaders
+            |> div
+                [ Attr.class "leaderboard-entries" ]
         ]
